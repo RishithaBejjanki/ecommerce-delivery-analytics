@@ -1,6 +1,6 @@
 # E-commerce Delivery Performance: from analysis to solution
 
-**One business problem, worked end to end the way a Business Analyst would:**
+**One business problem, worked end to end the way an Analyst would:**
 find out what's going wrong, size it, recommend what to do, then specify the fix.
 
 Built on the [Olist Brazilian E-Commerce dataset](https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce):
