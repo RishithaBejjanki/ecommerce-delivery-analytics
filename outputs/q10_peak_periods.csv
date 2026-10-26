@@ -1,0 +1,4 @@
+period,orders,orders_per_month,late_pct,seller_handling_days,carrier_transit_days,promised_days
+0. All other months,69645,4353.0,4.2,2.6,8.2,24.2
+1. Nov-Dec 2017 (Black Friday / holiday),12801,6401.0,10.3,3.5,11.3,25.4
+2. Feb-Mar 2018,13558,6779.0,16.6,3.1,13.2,23.9

@@ -1,0 +1,6 @@
+customer_region,orders,late_pct,avg_transit_days,avg_promised_days,avg_review_score,late_orders
+Northeast,9000,12.8,16.7,31.2,3.97,1149
+North,1789,8.6,19.3,38.1,4.03,154
+Central-West,5596,6.6,11.9,27.2,4.13,367
+Southeast,65894,6.1,7.6,22.2,4.18,4043
+South,13725,5.9,10.8,27.0,4.19,815

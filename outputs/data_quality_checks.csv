@@ -1,0 +1,12 @@
+rule_id,check_name,rows_affected,rows_checked,action
+DQ-01,Orders not in delivered status,2963,99441,Excluded from delivery analysis (no delivery outcome yet)
+DQ-02,Orders outside Jan-2017 to Aug-2018 window,349,99441,Excluded: 2016 and Sep/Oct-2018 months have under 400 orders each
+DQ-03,Handed to carrier before purchase timestamp,166,99441,"Excluded: impossible sequence, likely a system timestamp error"
+DQ-04,Delivered to customer before handed to carrier,23,99441,Excluded: impossible sequence
+DQ-05,Status delivered but no delivery date,8,99441,Excluded: outcome unknown
+DQ-06,Duplicate / multiple reviews for one order,551,99224,Kept the most recently answered review per order
+DQ-07,Products with no category,610,32951,"Labelled ""unknown"""
+DQ-08,Categories missing from English translation file,2,73,Kept the Portuguese name
+DQ-09,Delivered orders with no review,642,96004,Kept for delivery KPIs; excluded only from review-score averages
+DQ-10,Orders with items from more than one seller,1249,96004,Attributed to the seller of the highest-priced item (primary_seller_id)
+DQ-11,Orders kept for analysis (after all rules),96004,99441,Final analysis population
