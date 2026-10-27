@@ -1,0 +1,4 @@
+risk_tier,orders,pct_of_orders,late_orders,late_rate_pct,pct_of_all_late_caught,avg_review_score
+HIGH,8477,16.1,1606.0,18.9,39.4,3.94
+MEDIUM,14376,27.3,1297.0,9.0,31.8,4.1
+LOW,29759,56.6,1173.0,3.9,28.8,4.22

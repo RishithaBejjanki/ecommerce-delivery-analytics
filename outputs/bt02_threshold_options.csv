@@ -1,0 +1,5 @@
+option_id,description,high_pct_of_orders,high_late_rate_pct,high_catches_pct_of_late,high_or_medium_catches_pct_of_late,low_late_rate_pct,high_alerts_per_day
+A,History only (no live signal),7.5,23.5,22.7,50.9,5.4,16.0
+B,"History + live, HIGH < 0, MEDIUM < 5  [recommended]",16.1,18.9,39.4,71.2,3.9,35.0
+C,"History + live, HIGH < 2, MEDIUM < 5",25.6,15.5,51.0,71.2,3.9,56.0
+D,"History + live, HIGH < 3, MEDIUM < 7",30.4,14.5,56.7,81.6,3.1,67.0

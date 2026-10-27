@@ -1,0 +1,17 @@
+tc_id,requirement,rule,scenario,mode,handoff_at,ship_by_at,promised_date,rescore_at,history_days,live_days,live_deliveries,buffer_days,prior_tier,expected_tier,expected_missed,expected_range_from,expected_range_to
+UAT-01,FR-05,BRL-01/04/06/10,Worked example from the BRD: live signal slower than history,handoff,2018-05-10 10:00,2018-05-12 18:00,2018-05-19,,12.0,13.0,45,0,,HIGH,no,2018-05-21,2018-05-25
+UAT-02,FR-05,BRL-06,Slack exactly 0 is MEDIUM not HIGH,handoff,2018-05-07 00:00,2018-05-09 18:00,2018-05-19,,13.0,,0,0,,MEDIUM,no,,
+UAT-03,FR-05,BRL-06,Slack 4.9 is MEDIUM,handoff,2018-05-02 02:24,2018-05-04 18:00,2018-05-19,,13.0,,0,0,,MEDIUM,no,,
+UAT-04,FR-05,BRL-06,Slack exactly 5 is LOW,handoff,2018-05-02 00:00,2018-05-04 18:00,2018-05-19,,13.0,,0,0,,LOW,no,,
+UAT-05,FR-02/FR-05,BRL-06/12,Seller missed deadline but plenty of slack is MEDIUM,handoff,2018-05-01 12:00,2018-04-30 18:00,2018-05-26,,13.0,,0,0,,MEDIUM,yes,,
+UAT-06,FR-05,BRL-03/04,Live signal used when 20+ deliveries,handoff,2018-03-01 08:00,2018-03-03 18:00,2018-03-15,,10.0,16.0,30,0,,HIGH,no,2018-03-16,2018-03-19
+UAT-07,FR-05,BRL-03,Live signal ignored when under 20 deliveries,handoff,2018-03-01 08:00,2018-03-03 18:00,2018-03-15,,10.0,16.0,12,0,,MEDIUM,no,,
+UAT-08,FR-14,BRL-15,No disruption buffer: LOW,handoff,2018-03-01 08:00,2018-03-03 18:00,2018-03-17,,10.0,,0,0,,LOW,no,,
+UAT-09,FR-14,BRL-15,Same order with 3 buffer days: MEDIUM,handoff,2018-03-01 08:00,2018-03-03 18:00,2018-03-17,,10.0,,0,3,,MEDIUM,no,,
+UAT-10,FR-02,BRL-12,Hand-off exactly at the deadline is not missed,handoff,2018-05-12 18:00,2018-05-12 18:00,2018-06-01,,13.0,,0,0,,LOW,no,,
+UAT-11,FR-02,BRL-12,Hand-off one minute after the deadline is missed,handoff,2018-05-12 18:01,2018-05-12 18:00,2018-06-01,,13.0,,0,0,,MEDIUM,yes,,
+UAT-12,FR-06,BRL-07,MEDIUM order slips to HIGH on daily re-score,rescore,2018-05-04 00:00,2018-05-06 18:00,2018-05-14,2018-05-10 00:00,13.0,,0,0,MEDIUM,HIGH,no,2018-05-15,2018-05-18
+UAT-13,FR-06,BRL-07,Tier never goes down on re-score,rescore,2018-05-04 00:00,2018-05-06 18:00,2018-06-10,2018-05-05 00:00,13.0,,0,0,HIGH,HIGH,no,,
+UAT-14,FR-06,BRL-07,Expected remaining floors at 1 day,rescore,2018-05-01 00:00,2018-05-03 18:00,2018-05-25,2018-05-20 00:00,13.0,,0,0,MEDIUM,MEDIUM,no,,
+UAT-15,FR-08/FR-09,BRL-10,Very late order gets a later date range,handoff,2018-02-10 00:00,2018-02-12 18:00,2018-02-20,,12.0,21.2,50,0,,HIGH,no,2018-03-01,2018-03-05
+UAT-16,FR-08/FR-09,BRL-10,Slightly late order: range starts at promised + 1,handoff,2018-02-10 00:00,2018-02-12 18:00,2018-02-20,,11.5,,0,0,,HIGH,no,2018-02-21,2018-02-23

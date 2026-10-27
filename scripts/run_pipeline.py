@@ -64,12 +64,15 @@ def main():
         con.execute((SQL / f).read_text())
     con.sql("SELECT * FROM dq_results").df().to_csv(OUT / "data_quality_checks.csv", index=False)
 
-    print("2/5  Running business questions")
-    queries = split_named_queries((SQL / "04_analysis.sql").read_text())
+    print("2/5  Running business questions (04) and early-warning backtest (05)")
     results = {}
-    for name, q in queries.items():
-        results[name] = con.sql(q).df()
-        print(f"     {name:28s} {len(results[name]):>4} rows")
+    for f in ["04_analysis.sql", "05_early_warning_backtest.sql"]:
+        text = (SQL / f).read_text()
+        setup = re.split(r"^-- name:", text, maxsplit=1, flags=re.MULTILINE)[0]
+        con.execute(setup)  # tables a file builds before its named queries
+        for name, q in split_named_queries(text).items():
+            results[name] = con.sql(q).df()
+            print(f"     {name:28s} {len(results[name]):>4} rows")
 
     print("3/5  Saving results")
     for name, df in results.items():

@@ -185,8 +185,28 @@ def chart_pareto():
     save(fig, "06_seller_concentration.png")
 
 
+def chart_backtest():
+    df = pd.read_csv(OUT / "bt01_recommended_rule.csv").set_index("risk_tier").loc[["LOW", "MEDIUM", "HIGH"]]
+    fig, ax = plt.subplots(figsize=(9, 3.8))
+    colors = [BLUE, "#eda100", ORANGE]
+    bars = ax.barh(df.index, df["late_rate_pct"], color=colors, height=0.6)
+    ax.set_axisbelow(True)
+    for b, r in zip(bars, df.itertuples()):
+        verb = "missed" if r.Index == "LOW" else "caught"
+        ax.text(r.late_rate_pct + 0.3, b.get_y() + b.get_height() / 2,
+                f"{r.late_rate_pct:.1f}% late  ·  {r.pct_of_orders:.0f}% of orders  ·  {r.pct_of_all_late_caught:.0f}% of late orders {verb}",
+                va="center", color=INK, fontsize=10)
+    ax.set_xlim(0, df["late_rate_pct"].max() * 2.4)
+    ax.set_xlabel("Orders delivered late (%)")
+    ax.set_title("The risk rule separates late orders from on-time ones", pad=24)
+    subtitle(ax, "Backtest on Jan-Aug 2018 orders, rule scored at carrier hand-off (benchmarks from 2017 + last 14 days)")
+    ax.grid(axis="y", visible=False)
+    save(fig, "07_early_warning_backtest.png")
+
+
 def main():
     CHARTS.mkdir(exist_ok=True)
+    chart_backtest()
     chart_monthly_trend()
     chart_reviews()
     chart_stages()
