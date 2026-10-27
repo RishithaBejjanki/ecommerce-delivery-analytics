@@ -9,7 +9,7 @@ real, anonymised marketplace data with ~100k orders (2016–2018) across 9 linke
 | Part | Question | Skills shown | Status |
 |---|---|---|---|
 | **1. Delivery performance analysis** | Why are deliveries late, and what does it cost us? | SQL (CTEs, window functions), star-schema modelling, data quality, Python, Power BI, recommendation writing | ✅ Complete |
-| **2. BA case study: late-delivery early warning** | What process and system change fixes it? | Stakeholder analysis, process mapping, BRD, user stories, acceptance criteria, UAT | 🔜 In progress |
+| **[2. BA case study: late-delivery early warning](part2_ba_case_study/)** | What process and system change fixes it? | Stakeholder analysis, process mapping, BRD, user stories, acceptance criteria, UAT, rule backtest | ✅ Complete |
 | **3. AI reporting assistant** | Can the weekly ops report write itself? | Python, LLM API, text-to-SQL | 🔜 Planned |
 
 ---
@@ -82,7 +82,7 @@ Full reasoning in the [recommendation memo](docs/recommendation_memo.md).
 3. **Peak-season promise dates.** Lengthen the promised date automatically when volume
    is running well above normal, so the promise stays honest when capacity is stretched.
 4. **Late-delivery early warning.** Flag at-risk orders (missed hand-off, long lane, peak period)
-   and contact the customer *before* the promise is broken. **→ This is specified in Part 2.**
+   and contact the customer *before* the promise is broken. **→ Specified and backtested in [Part 2](part2_ba_case_study/).**
 
 **Sizing:** halving lateness would remove ~1,500 one-star reviews (16% of all) and lift the
 average review from 4.16 to 4.22. Customers whose first order was late also came back less
@@ -135,3 +135,18 @@ server needed), and the syntax ports easily to Snowflake or Postgres.
 ├── docs/                recommendation memo, data dictionary, data quality log
 └── data/                raw/ (download) and processed/ (generated), not committed
 ```
+
+---
+
+## Part 2: BA case study, Delivery Risk Alerts
+**[→ Open the case study](part2_ba_case_study/)**
+
+Part 1's fourth recommendation, turned into a full requirements package: business case, stakeholder
+analysis and RACI, current- and future-state process maps, a BRD with 16 functional requirements and
+16 business rules, 13 user stories with Given/When/Then acceptance criteria, a UAT plan with
+24 automated rule tests, and a traceability matrix.
+
+The core rule was **backtested on 52,612 real 2018 orders** before going into the BRD. Orders it flags
+HIGH were late 18.9% of the time vs 3.9% for LOW, and it gives a median of 11.8 days' warning.
+
+![Backtest](charts/07_early_warning_backtest.png)
