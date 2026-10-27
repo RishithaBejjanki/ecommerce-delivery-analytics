@@ -89,6 +89,15 @@ average review from 4.16 to 4.22. Customers whose first order was late also came
 often (2.72% vs 3.51% repeat rate). Repeat buying is low on this platform overall,
 so treat that as directional.
 
+### Dashboard
+Three-page Power BI report built on the same star schema: **Overview** (KPIs and trend), **Root cause** (stages, seller hand-offs, states), and **Seller watchlist** (who to act on first).
+
+![Overview](powerbi/screenshots/page1_overview.png)
+![Root cause](powerbi/screenshots/page2_root_cause.png)
+![Seller watchlist](powerbi/screenshots/page3_watchlist.png)
+
+Files: [`delivery_performance.pbix`](powerbi/delivery_performance.pbix) · [PDF export](powerbi/delivery_performance.pdf)
+
 ### How it's built
 
 ```
